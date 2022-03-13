@@ -722,6 +722,7 @@ footer {
   z-index: 10;
   min-width: 160px;
   opacity: 0;
+  pointer-events: none;
 
   @media #{$s1100} {
     right: 20px;

@@ -284,11 +284,11 @@ function swiperInit() {
     gsap.registerPlugin(ScrollTrigger);
 
     setTimeout(() => {
-      gsap.to(".cta_fixed_popup", { opacity: 1 });
+      gsap.to(".cta_fixed_popup", { opacity: 1, pointerEvents: "initial" });
     }, 10000);
 
     $(".close_fixed_popup").on("click", function () {
-      $(".cta_fixed_popup").fadeOut();
+      gsap.to(".cta_fixed_popup", { opacity: 0, pointerEvents: "none" });
     });
 
     if ($("body").hasClass("page-template-tmplt-artist")) {
