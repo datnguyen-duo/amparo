@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="121" height="42" viewBox="0 0 121 42">
+  <g id="Group_4969" data-name="Group 4969" transform="translate(-1137 -2184.802)">
+    <g id="Group_4823" data-name="Group 4823" transform="translate(1137 2185)">
+      <g id="Group_4782" data-name="Group 4782">
+        <rect id="Rectangle_21886" data-name="Rectangle 21886" width="121" height="42" rx="5" transform="translate(0 -0.199)" fill="#ededed"/>
+      </g>
+      <g id="Group_4822" data-name="Group 4822" transform="translate(6.386 11.822)">
+        <path id="Path_46842" data-name="Path 46842" d="M-22115.182,9992.919s.906-8.976-8.52-9.078" transform="translate(22124.121 -9974.763)" fill="none" stroke="#4b58aa" stroke-width="1"/>
+        <line id="Line_178" data-name="Line 178" x1="22.779" transform="translate(0 9.078)" fill="none" stroke="#4b58aa" stroke-width="1"/>
+        <path id="Path_46843" data-name="Path 46843" d="M-22115.182,9983.841s.906,8.977-8.52,9.078" transform="translate(22124.121 -9983.841)" fill="none" stroke="#4b58aa" stroke-width="1"/>
+      </g>
+      <g id="Group_4968" data-name="Group 4968" transform="translate(91.15 11.822)">
+        <path id="Path_46842-2" data-name="Path 46842" d="M-22123.678,9992.919s-.906-8.976,8.518-9.078" transform="translate(22137.52 -9974.763)" fill="none" stroke="#4b58aa" stroke-width="1"/>
+        <line id="Line_178-2" data-name="Line 178" x2="22.779" transform="translate(0 9.078)" fill="none" stroke="#4b58aa" stroke-width="1"/>
+        <path id="Path_46843-2" data-name="Path 46843" d="M-22123.678,9983.841s-.906,8.977,8.518,9.078" transform="translate(22137.52 -9983.841)" fill="none" stroke="#4b58aa" stroke-width="1"/>
+      </g>
+    </g>
+    <text id="drag" transform="translate(1196.318 2209.87)" fill="#4b58aa" font-size="14" font-family="Helvetica"><tspan x="-20.224" y="0">DRAG</tspan></text>
+  </g>
+</svg>

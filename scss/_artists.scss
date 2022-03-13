@@ -1,0 +1,749 @@
+.artists_wrap {
+  padding-top: 65px;
+  box-sizing: border-box;
+
+  @media #{$s1100} {
+    padding-top: 85px;
+  }
+
+  #artists_response {
+    @include transition();
+
+    &.loading {
+      opacity: 0;
+    }
+
+    .no-results {
+      height: 30vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @extend .text;
+    }
+  }
+
+  .mobile_artist_filter {
+    position: fixed;
+    left: 0;
+    top: 50px;
+    display: none;
+    // height: 50px;
+    height: 35px;
+    width: 100%;
+    background-color: $color2;
+    border-bottom: 1px solid $color1;
+    z-index: 5;
+    box-sizing: border-box;
+
+    @media #{$s1100} {
+      display: block;
+    }
+
+    .mobile_artist_filter_header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      .left {
+        border-right: 1px solid $color1;
+
+        .mobile_filters_holder {
+          // background-color: $color1;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          height: 100%;
+          justify-content: center;
+        }
+      }
+
+      .left,
+      .right {
+        padding: 4px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+
+        p,
+        input {
+          font-size: 14px;
+          color: $color1;
+          @extend .font2;
+
+          &::placeholder {
+            font-size: 14px;
+            color: $color1;
+            @extend .font2;
+            text-align: center;
+          }
+        }
+
+        input {
+          border: none;
+          background-color: transparent;
+          text-align: center;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        svg {
+          width: 9px;
+          margin-left: 5px;
+        }
+      }
+    }
+
+    .filters_holder {
+      background-color: $color2;
+      display: none;
+      position: fixed;
+      top: 85px;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid $color1;
+
+      @media #{$s750} {
+        height: calc(100vh - 85px);
+        overflow: auto;
+      }
+
+      .single_button {
+        cursor: pointer;
+        border: 1px solid $color1;
+        border-radius: 100%;
+        color: $color1;
+        font-size: 1vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        @extend .font2;
+        @include transition();
+        overflow: hidden;
+
+        @media #{$s1500} {
+          font-size: 14px;
+        }
+
+        @media #{$s1100} {
+          min-width: 150px;
+          height: 90px;
+        }
+
+        @media #{$s1023} {
+          position: relative;
+          bottom: auto;
+          left: auto;
+          right: auto;
+        }
+
+        @media #{$s1100} {
+          width: 120px;
+          margin: auto;
+          margin-top: 30px;
+          margin-bottom: 30px;
+          height: 80px;
+          padding: 0 10px;
+        }
+
+        span {
+          position: relative;
+          z-index: 1;
+          font-weight: 400;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          z-index: 0;
+          left: 50%;
+          top: 50%;
+          height: 7.1vw;
+          transform: translate(-50%, -50%) scale(0);
+          border-radius: 100%;
+          width: 101%;
+          opacity: 0;
+          background-color: $color1;
+          @include transition(all, 200ms);
+
+          @media #{$s1100} {
+            height: 90px;
+          }
+
+          @media #{$s750} {
+            height: 30px;
+          }
+        }
+
+        &:hover {
+          color: $color2;
+
+          &:after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+          }
+        }
+      }
+
+      .filter_headline {
+        padding-top: 30px;
+        padding-bottom: 10px;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 14px;
+        @extend .font2;
+        color: $color1;
+      }
+
+      .sort_filter_mobile {
+        display: flex;
+        margin-top: 10px;
+        justify-content: center;
+        padding: 0 15px;
+
+        .single_filter {
+          box-sizing: border-box;
+          padding: 7px 15px;
+          border: 1px solid $color1;
+          max-width: 130px;
+          width: 100%;
+          text-align: center;
+
+          input {
+            display: none;
+          }
+
+          span {
+            font-size: 12px;
+            color: $color1;
+            @extend .font2;
+          }
+
+          &:nth-of-type(1) {
+            border-radius: 3px 0 0 3px;
+          }
+
+          &:nth-of-type(2) {
+            border-left: none;
+            border-right: none;
+          }
+
+          &:nth-of-type(3) {
+            border-radius: 0 3px 3px 0;
+          }
+        }
+      }
+
+      .main_filters_mobile {
+        ul {
+          li {
+            padding: 5px;
+            box-sizing: border-box;
+            border-bottom: 1px solid $color1;
+
+            a {
+              font-size: 14px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 15px;
+              color: $color1;
+              margin-bottom: 5px;
+              border-radius: 3px;
+              @extend .font2;
+              @include transition();
+
+              &.active {
+                background-color: $color1;
+                color: $color2;
+
+                svg {
+                  path {
+                    stroke: $color2;
+                  }
+                }
+              }
+
+              svg {
+                width: 9px;
+                margin-left: 5px;
+              }
+            }
+
+            .sub_filters_mobile {
+              // display: flex;
+              flex-wrap: wrap;
+              width: 100%;
+              display: none;
+
+              label {
+                width: 25%;
+                padding: 0 5px;
+                box-sizing: border-box;
+
+                @media #{$s750} {
+                  width: 50%;
+                }
+
+                span {
+                  width: 100%;
+                  padding: 10px 15px;
+                }
+                input {
+                  display: none;
+
+                  &:checked {
+                    & + span {
+                      background-color: $color1;
+
+                      &:after,
+                      &:before {
+                        color: $color2;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .artists_list_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid $color1;
+
+    .left {
+      width: 50%;
+      border-right: 1px solid $color1;
+      box-sizing: border-box;
+
+      @media #{$s1100} {
+        width: 60%;
+      }
+
+      @media #{$s750} {
+        width: 100%;
+      }
+
+      .single_artist {
+        padding: 3vw;
+        cursor: pointer;
+        box-sizing: border-box;
+        border-bottom: 1px solid $color1;
+        position: relative;
+        display: block;
+        opacity: 0;
+        @include transition();
+
+        &.animate {
+          opacity: 1;
+        }
+
+        @media #{$s1100} {
+          display: flex;
+          padding: 0px;
+        }
+
+        &:after {
+          content: "";
+          background-color: $color5;
+          width: 0%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          z-index: 0;
+          @include transition();
+        }
+
+        &:nth-of-type(1) {
+          &:after {
+            background-color: $color5;
+          }
+        }
+
+        &:nth-of-type(2) {
+          &:after {
+            background-color: $color6;
+          }
+        }
+
+        &:nth-of-type(3) {
+          &:after {
+            background-color: $color3;
+          }
+        }
+
+        &:nth-of-type(4) {
+          &:after {
+            background-color: $color4;
+          }
+        }
+
+        &:nth-of-type(5) {
+          &:after {
+            background-color: $color5;
+          }
+        }
+
+        &:nth-of-type(6) {
+          &:after {
+            background-color: $color6;
+          }
+        }
+
+        &:nth-of-type(7) {
+          &:after {
+            background-color: $color3;
+          }
+        }
+
+        &:nth-of-type(8) {
+          &:after {
+            background-color: $color4;
+          }
+        }
+
+        &:hover {
+          &:after {
+            width: 100%;
+          }
+        }
+
+        .artist_image_mobile_wrap {
+          display: none;
+          width: 35%;
+          padding-right: 3vw;
+          padding: 3vw;
+          box-sizing: border-box;
+          z-index: 2;
+
+          @media #{$s1100} {
+            display: block;
+          }
+
+          @media #{$s750} {
+            padding: 10px;
+          }
+
+          .artist_image_mobile {
+            border-radius: 5px;
+            border: 1px solid $color1;
+            overflow: hidden;
+            position: relative;
+            padding-top: 90%;
+
+            img {
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+
+        .artist_info_holder {
+          @media #{$s1100} {
+            padding: 3vw;
+            width: 65%;
+            box-sizing: border-box;
+            border-left: 1px solid $color1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+
+          @media #{$s750} {
+            padding: 10px;
+          }
+
+          h2 {
+            @extend .headline;
+            margin-bottom: 20px;
+            z-index: 1;
+            position: relative;
+
+            @media #{$s1100} {
+              margin-bottom: 10px;
+            }
+          }
+
+          .artist_info {
+            z-index: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+
+            p {
+              @extend .text;
+              text-transform: uppercase;
+              display: inline-block;
+
+              @media #{$s1500} {
+                font-size: 12px;
+              }
+
+              @media #{$s750} {
+                font-size: 10px;
+              }
+            }
+
+            span {
+              display: flex;
+              margin-left: 5px;
+              margin-right: 5px;
+
+              img {
+                vertical-align: top;
+                width: 0.5vw;
+              }
+            }
+          }
+        }
+      }
+
+      .artists_pagination {
+        display: flex;
+
+        .middle {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          ul {
+            li {
+              display: inline-block;
+              margin-right: 1.5vw;
+              @extend .text;
+              text-transform: uppercase;
+              display: inline-block;
+              opacity: 0.4;
+              cursor: pointer;
+              @include transition();
+
+              @media #{$s750} {
+                margin-right: 10px;
+              }
+
+              &.active {
+                opacity: 1;
+              }
+
+              &:last-child {
+                margin-right: 0px;
+              }
+
+              &:hover {
+                opacity: 1;
+              }
+            }
+          }
+        }
+        .pagination_arrow {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 2vw;
+          box-sizing: border-box;
+          border-right: 1px solid $color1;
+          cursor: pointer;
+
+          @media #{$s750} {
+            padding: 15px;
+          }
+
+          &.pagination_arrow_right {
+            border-right: none;
+            border-left: 1px solid $color1;
+
+            img {
+              position: relative;
+              left: 0;
+              transform: rotate(180deg);
+              @include transition();
+            }
+          }
+
+          &.pagination_arrow_left {
+            img {
+              position: relative;
+              left: 0;
+              @include transition();
+            }
+          }
+
+          &:hover {
+            &.pagination_arrow_right {
+              img {
+                left: 4px;
+              }
+            }
+
+            &.pagination_arrow_left {
+              img {
+                left: -4px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      width: 50%;
+
+      @media #{$s1100} {
+        width: 40%;
+      }
+
+      @media #{$s750} {
+        display: none;
+      }
+
+      // .artist_image{
+      //     position: absolute;
+      //     z-index: 2;
+      // }
+
+      .right_content {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 80px;
+        flex-direction: column;
+        text-align: center;
+
+        .artist_info {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 90%;
+
+          .sub_headline {
+            @extend .small_text;
+            margin-bottom: 20px;
+            display: block;
+
+            @media #{$s1500} {
+              font-size: 12px;
+            }
+
+            @media #{$s1023} {
+              font-size: 10px;
+              margin-bottom: 10px;
+            }
+          }
+
+          h3 {
+            @extend .headline;
+          }
+
+          .sign {
+            position: relative;
+            position: relative;
+            width: 60px;
+            height: 60px;
+            margin: auto;
+            margin-top: 120px;
+            cursor: pointer;
+
+            @media #{$s1100} {
+              margin-top: 60px;
+            }
+
+            @media #{$s1023} {
+              width: 40px;
+              height: 40px;
+            }
+
+            @media #{$s750} {
+              display: none;
+            }
+
+            img {
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              position: absolute;
+              @include transition();
+
+              @media #{$s1023} {
+                width: 40px;
+                height: 40px;
+
+                &:last-child {
+                  width: 20px;
+                }
+              }
+
+              &.arrow_right {
+                transform: translate(-50%, -50%) rotate(180deg);
+              }
+            }
+
+            &:hover {
+              img {
+                &:first-child {
+                  transform: translate(-50%, -50%) rotate(90deg);
+                }
+              }
+            }
+          }
+        }
+
+        .artist_image_wrap {
+          padding: 1.5vw;
+          box-sizing: border-box;
+          width: 100%;
+          height: 100%;
+
+          .artist_image {
+            z-index: 2;
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid $color1;
+            padding-top: 95%;
+            // height: 100vh;
+            position: relative;
+            box-sizing: border-box;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            @include transition();
+
+            &.visible {
+              opacity: 1;
+              visibility: visible;
+            }
+
+            img {
+              width: 100%;
+              position: absolute;
+              left: 0;
+              top: 0;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+}

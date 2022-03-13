@@ -1,0 +1,243 @@
+$s1500: "only screen and (max-width : 1500px)";
+$s1280: "only screen and (max-width : 1280px)";
+$s1100: "only screen and (max-width : 1100px)";
+$s1023: "only screen and (max-width : 1023px)";
+$s900: "only screen and (max-width : 900px)";
+$s800: "only screen and (max-width : 800px)";
+$s750: "only screen and (max-width : 750px)";
+$s650: "only screen and (max-width : 650px)";
+$s600: "only screen and (max-width : 600px)";
+$s560: "only screen and (max-width : 560px)";
+
+@import "reset";
+
+@mixin transition($el: all, $speed: 600ms, $tf: ease, $delay: 0ms) {
+  -webkit-transition: $el $speed $tf $delay;
+  -moz-transition: $el $speed $tf $delay;
+  -o-transition: $el $speed $tf $delay;
+  transition: $el $speed $tf $delay;
+}
+
+
+@mixin font-face(
+  $font-name,
+  $font-path,
+  $font-weight: normal,
+  $font-style: normal
+) {
+  @font-face {
+    font-family: "#{$font-name}";
+    src: url("../fonts/#{$font-path}.woff2") format("woff2"),
+      url("../fonts/#{$font-path}.woff") format("woff");
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
+
+@include font-face("Ginkgo-Black", "Ginkgo-Black");
+@include font-face("Ginkgo-Bold", "Ginkgo-Bold");
+@include font-face("Ginkgo-Regular", "Ginkgo-Regular");
+@include font-face("Ginkgo-Light", "Ginkgo-Light");
+
+$font1Black: "Ginkgo-Black", serif;
+$font1Bold: "Ginkgo-Bold", serif;
+$font1Regular: "Ginkgo-Regular", serif;
+$font1Light: "Ginkgo-Light", serif;
+
+$color1: #4b58aa;
+$color2: #ededed;
+$color3: #63c489;
+$color4: #e0d927;
+
+.font2 {
+  font-family: "aktiv-grotesk";
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+.font2I {
+  font-family: "aktiv-grotesk";
+  font-display: auto;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.font2M {
+  font-family: "aktiv-grotesk";
+  font-display: auto;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.font2MI {
+  font-family: "aktiv-grotesk";
+  font-display: auto;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.letter_wrap {
+  line-height: 1em;
+  .single_word {
+    display: inline-block;
+  }
+
+  .word_wrap {
+    display: inline-block;
+
+    span {
+      opacity: 0;
+      display: inline-block;
+      transform: translateX(100%);
+      @include transition();
+    }
+  }
+
+  &.in-view {
+    .word_wrap {
+      span {
+        opacity: 1;
+        transform: translateX(0%);
+      }
+    }
+  }
+}
+
+.main-content {
+  margin-top: 0px;
+  padding: 0px !important;
+}
+
+#preview-bar-iframe {
+  display: none;
+}
+
+.page-container {
+  transform: none !important;
+  transition: none !important;
+  overflow: initial !important;
+}
+
+.shopify-challenge__container {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body,
+html {
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  padding: 0px !important;
+  margin: 0;
+  font-family: $font1Bold;
+  background-color: $color2;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  &.no_scroll {
+    overflow: hidden;
+  }
+}
+
+.button {
+  border: none;
+  color: transparent;
+  background-color: $color2;
+  border-radius: 5px;
+  padding: 0.4vw 2vw;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 18px;
+  @extend .font2M;
+  text-transform: uppercase;
+  text-decoration: none;
+  @include transition();
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+
+  @media #{$s1100}{
+    padding: 5px 20px;
+  }
+
+  @media #{$s750}{
+    font-size: 14px;
+  }
+
+  &:after {
+    content: attr(data-text);
+    position: absolute;
+    transform: translate(0%, -200%);
+    color: $color1;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    text-align: center;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    @media #{$s1100}{
+      transform: translate(0%, -250%);
+    }
+  }
+
+  &:before {
+    content: attr(data-text);
+    position: absolute;
+    transform: translate(0%, -50%);
+    color: $color1;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    text-align: center;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  &.dark {
+    background-color: $color1;
+
+    &:after,
+    &:before {
+      color: $color2;
+    }
+  }
+
+  &:hover {
+    &:before {
+      transform: translate(0%, 200%);
+
+      @media #{$s1100}{
+        transform: translate(0%, 250%);
+      }
+    }
+
+    &:after {
+      transform: translate(0%, -50%);
+    }
+  }
+}
+
+.fade_up{
+  position: relative;
+  top: 2vw;
+  opacity: 0;
+  @include transition();
+
+  &.in-view{
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.marquee {
+  opacity: 0;
+}
+
+@import "header";
+@import "footer";
+@import "home";
+@import "quiz";

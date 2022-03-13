@@ -1,0 +1,453 @@
+.thank_you_wrap{
+    padding-top: 80px;
+    box-sizing: border-box;
+
+    @media #{$s750} {
+      padding-top: 50px;
+    }
+
+    .old_thankyou{
+        display: none;
+    }
+
+    .thank_you_header{
+        position: relative;
+        overflow: hidden;
+        background-color: $color1;
+
+        @media #{$s750} {
+          border-bottom: 1px solid $color1;
+        }
+
+        img{
+            width: 100%;
+            left: 0;
+            top: 0;
+            height: 100%;
+            object-fit: contain;
+            vertical-align: bottom;
+
+            &.mobile{
+              display: none;
+            }
+
+            @media #{$s750} {
+              &.mobile{
+                display: block;
+              }
+
+              &.desktop{
+                display: none;
+              }
+            }
+        }
+
+        .headline_holder{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 35vw;
+
+            @media #{$s750} {
+              max-width: 100%;
+              width: 90%;
+              top: 46%;
+            }
+            
+            h1{
+                @extend .big_headline;
+                text-align: center;
+                color: $color2;
+    
+            }
+    
+            p{
+                margin-top: 1vw;
+                @extend .font2;
+                font-size: 1vw;
+                color: $color2;
+                text-align: center;
+
+                @media #{$s1023} {
+                    font-size: 14px;
+                    max-width: 80%;
+                    margin: auto;
+                }
+            }
+
+            .scroll_down{
+                position: absolute;
+                bottom: -50%;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+        
+                @media #{$s750} {
+                  bottom: -60%;
+                }
+                
+                svg{
+                  animation: bounce 1600ms infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+                  width: 1.1vw;
+                  position: relative;
+        
+                  @media #{$s1023} {
+                    width: 15px;
+                  }
+                }
+        
+                span {
+                  @extend .small_text;
+                  display: block;
+                  text-transform: uppercase;
+                  margin-bottom: 0.5vw;
+                  color: $color2;
+        
+                  @media #{$s1023} {
+                    font-size: 10px;
+                    margin-bottom: 10px;
+                  }
+                }
+            }
+        }
+    }
+
+    .contact_section {
+        border-top: 1px solid $color1;
+    
+        @media #{$s1023} {
+          z-index: 2;
+          background-color: $color2;
+          position: relative;
+        }
+    
+        .contact_section_content {
+          display: flex;
+    
+          @media #{$s1023} {
+            flex-wrap: wrap;
+          }
+    
+          .left {
+            width: 55%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid $color1;
+            padding: 8vw 0;
+            box-sizing: border-box;
+    
+            @media #{$s1023} {
+              width: 100%;
+              border-right: none;
+              padding: 50px 20px;
+            }
+    
+            .left_content {
+              text-align: center;
+    
+              @media #{$s1100} {
+                padding: 0 20px;
+                box-sizing: border-box;
+              }
+    
+              h2 {
+                color: $color1;
+                font-size: 10vw;
+                margin-bottom: 3vw;
+                font-family: $font1Light;
+    
+                @media #{$s1100} {
+                  font-size: 8vw;
+                }
+    
+                @media #{$s1023} {
+                  font-size: 60px;
+                }
+    
+                @media #{$s750} {
+                  font-size: 50px;
+                }
+              }
+    
+              .sign {
+                position: relative;
+                position: relative;
+                width: 60px;
+                height: 60px;
+                margin: auto;
+                margin-bottom: 3vw;
+                cursor: pointer;
+    
+                @media #{$s1023} {
+                  width: 40px;
+                  height: 40px;
+                  margin-bottom: 30px;
+                }
+    
+                @media #{$s750} {
+                  display: none;
+                }
+    
+                img {
+                  left: 50%;
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                  position: absolute;
+                  @include transition();
+    
+                  @media #{$s1023} {
+                    width: 40px;
+                    height: 40px;
+    
+                    &:last-child {
+                      width: 20px;
+                    }
+                  }
+                }
+    
+                &:hover {
+                  img {
+                    &:first-child {
+                      transform: translate(-50%, -50%) rotate(90deg);
+                    }
+                  }
+                }
+              }
+    
+              p {
+                font-size: 1.25vw;
+                color: $color1;
+                max-width: 37vw;
+                margin: auto;
+                // text-transform: uppercase;
+                line-height: 1.2em;
+                @extend .font2M;
+    
+                @media #{$s1100} {
+                  font-size: 16px;
+                  max-width: 100%;
+                }
+    
+                @media #{$s750} {
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+    
+          .right {
+            width: 45%;
+            position: relative;
+            display: flex;
+    
+            @media #{$s1023} {
+              width: 100%;
+              flex-direction: column;
+            }
+    
+            .banner {
+              position: relative;
+              left: 0;
+              background-color: $color6;
+              border-right: 1px solid #4b58aa;
+              width: 100%;
+              overflow: hidden;
+              max-width: 5.2vw;
+              display: flex;
+              justify-content: flex-start;
+              align-items: flex-start;
+    
+              @media #{$s1023} {
+                max-width: 100%;
+                position: relative;
+                top: 0px;
+                left: 0;
+                border-bottom: 1px solid $color1;
+                border-top: 1px solid $color1;
+                border-right: none;
+                width: 100%;
+                overflow-x: hidden;
+              }
+    
+              .second_banner_content {
+                position: relative;
+                display: flex;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                left: 2.6vw;
+                top: -10px;
+                transform-origin: center left;
+                width: 100%;
+                white-space: nowrap;
+                transform: rotate(90deg);
+    
+                @media #{$s1023} {
+                  transform: none;
+                  max-width: 100%;
+                  top: auto;
+                  left: auto;
+                  position: relative;
+                  display: inline-block;
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                  padding: 15px 0;
+                  box-sizing: border-box;
+                  white-space: nowrap;
+                }
+    
+                p {
+                  font-size: 1.25vw;
+                  color: $color1;
+                  margin-right: 20px;
+                  @extend .font2MI;
+                  display: inline-block;
+                  text-transform: uppercase;
+    
+                  @media #{$s1100} {
+                    font-size: 16px;
+                  }
+                }
+              }
+            }
+    
+            .right_content {
+              padding-top: 9vw;
+              padding-bottom: 7vw;
+              box-sizing: border-box;
+              width: 100%;
+    
+              @media #{$s1023} {
+                padding-top: 20px;
+                padding-bottom: 50px;
+              }
+
+                .orders_wrap_list{
+                    padding: 0 2vw;
+                    box-sizing: border-box;
+
+                    @media #{$s750} {
+                        padding: 0px 30px;
+                    }
+
+                    h4{
+                        @extend .text;
+                        text-transform: uppercase;
+                        margin-bottom: 20px;
+
+                        @media #{$s750} {
+                            margin-bottom: 10px;
+                        }
+                    }
+
+                    .single_order{
+                        display: flex;
+                        margin-bottom: 10px;
+
+                        .left_info{
+                            width: 30%;
+
+                            .product_image{
+                                position: relative;
+                                overflow: hidden;
+                                border-radius: 5px;
+                                padding-top: 93%;
+                                border: 1px solid $color1;
+
+                                img{
+                                    position: absolute;
+                                    left: 0;
+                                    top: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                }
+                            }
+
+                        }
+
+                        .right_info_wrap{
+                            width: 70%;
+                            display: flex;
+                            align-items: center;
+                            padding: 0 1vw;
+
+                            @media #{$s750} {
+                                padding: 0px 15px;
+                            }
+
+                            .product_title, .product_price{
+                                @extend .text;
+                                text-transform: uppercase;
+                            }
+
+                            .product_author{
+                                @extend .small_text;
+                                margin-top: 10px;
+                                text-transform: capitalize;
+                            }
+
+                            .right_info{
+                                width: 100%;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
+                        }
+                    }
+                }
+
+                .general_order_info{
+                    margin-top: 20px;
+
+                    .single_order_info{
+                        border-bottom: 1px solid $color1;
+                        padding: 2vw;
+                        box-sizing: border-box;
+                        display: flex;
+                        justify-content: space-between;
+
+                        @media #{$s750} {
+                            padding: 10px 30px
+                        }
+
+                        .order_info_name, .order_info_price{
+                            @extend .text;
+                        }
+
+                        &:first-child{
+                            border-top: 1px solid $color1;
+                        }
+
+                        &:last-child{
+                            border-bottom: none;
+
+                            .order_info_name, .order_info_price{
+                                @extend .text;
+                                font-size: 40px;
+
+                                @media #{$s1100} {
+                                    font-size: 35px;
+                                }
+
+                                @media #{$s1023} {
+                                    font-size: 30px;
+                                }
+
+                                @media #{$s750} {
+                                    font-size: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+          }
+        }
+    }
+}

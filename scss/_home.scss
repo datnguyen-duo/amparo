@@ -1,0 +1,333 @@
+.home_indicator_desktop {
+  pointer-events: none!important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+  margin: auto;
+  z-index: 1000;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  body.dragging & {
+    opacity: 0;
+  }
+
+  img {
+    width: 20px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: $color1;
+    @extend .font2M;
+    font-size: 12px;
+  }
+}
+
+.home_wrap {
+  height: 100vh;
+  padding-top: 65px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+
+  @media #{$s1100} {
+    padding-top: 50px;
+  }
+
+  @media #{$s750} {
+    padding-top: 85px;
+  }
+
+  .home_fixed_button {
+    width: 11vw;
+    height: 6vw;
+    cursor: pointer;
+    border: 1px solid $color1;
+    border-radius: 100%;
+    color: $color1;
+    font-size: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    @extend .font2;
+    @include transition();
+    position: fixed;
+    right: 2vw;
+    bottom: 2vw;
+    z-index: 11;
+    overflow: hidden;
+    background-color: $color2;
+
+    @media #{$s1500} {
+      font-size: 14px;
+    }
+
+    @media #{$s1100} {
+      min-width: 150px;
+      height: 90px;
+    }
+
+    @media #{$s750} {
+      min-width: 120px;
+      height: 80px;
+      padding: 0 10px;
+      bottom: 15px;
+      right: 15px;
+    }
+
+    span {
+      position: relative;
+      z-index: 1;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      left: 50%;
+      top: 50%;
+      height: 7.1vw;
+      transform: translate(-50%, -50%) scale(0);
+      border-radius: 100%;
+      width: 101%;
+      opacity: 0;
+      background-color: $color1;
+      @include transition(all, 200ms);
+
+      @media #{$s1100} {
+        height: 90px;
+      }
+
+      @media #{$s750} {
+        height: 80px;
+      }
+    }
+
+    &:hover {
+      color: $color2;
+
+      &:after {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+  }
+
+  .artist_work_wrap {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 65px);
+    overflow: hidden;
+
+    @media #{$s1100} {
+      height: calc(100vh - 50px);
+    }
+
+    .artist_work_grid {
+      // display: grid;
+      // grid-template-columns: auto auto auto auto auto;
+      // min-width: 200vw;
+      display: flex;
+      flex-wrap: wrap;
+      min-width: 150vw;
+      width: 100%;
+      z-index: 10 !important;
+
+      @media #{$s1100} {
+        min-width: 200vw;
+      }
+
+      @media #{$s1023} {
+        min-width: 250vw;
+      }
+
+      .single_work {
+        display: flex;
+        touch-action: initial!important;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid $color1;
+        border-bottom: 1px solid $color1;
+        box-sizing: border-box;
+        padding: 5vw 0;
+        @include transition();
+        position: relative;
+        cursor: pointer;
+
+        &:nth-child(10n + 1){
+          width: 24%;
+        }
+
+        &:nth-child(10n + 2){
+            width: 17%;
+        }
+
+        &:nth-child(10n + 3){
+            width: 26%;
+        }
+
+        &:nth-child(10n + 4){
+            width: 15%;
+        }
+
+        &:nth-child(10n + 5){
+            width: 18%;
+        }
+
+        &:nth-child(10n + 6){
+          width: 17%;
+        }
+
+        &:nth-child(10n + 7){
+            width: 20%;
+        }
+
+        &:nth-child(10n + 8){
+            width: 23%;
+        }
+
+        &:nth-child(10n + 9){
+            width: 17%;
+        }
+
+        &:nth-child(10n + 10){
+            width: 23%;
+        }
+
+        @media #{$s750} {
+          padding: 15vw 0;
+        }
+
+        .single_work_image {
+          max-width: 60%;
+
+          img {
+            width: 100%;
+            height: auto;
+            transform: scale(1);
+            max-height: 400px;
+            border: 1px solid $color1;
+            border-radius: 5px;
+            @include transition();
+          }
+        }
+
+        .price {
+          position: absolute;
+          right: 1vw;
+          top: 1vw;
+          opacity: 0;
+          line-height: 1.2em;
+
+          @media #{$s1100} {
+            opacity: 1;
+          }
+
+          @media #{$s1100} {
+            line-height: 0.8em;
+            top: 10px;
+            right: 10px;
+          }
+
+          span {
+            color: $color1;
+            @extend .font2;
+            font-size: 1vw;
+            text-transform: uppercase;
+            display: block;
+            @include transition();
+
+            @media #{$s1023} {
+              font-size: 10px;
+            }
+            
+          }
+        }
+
+        .art_name {
+          position: absolute;
+          left: 1vw;
+          opacity: 0;
+          bottom: 1vw;
+          @extend .text;
+          @extend .font2;
+          text-transform: uppercase;
+          @include transition();
+
+          @media #{$s1100} {
+            opacity: 1;
+            bottom: 10px;
+            left: 10px;
+          }
+
+          @media #{$s1023} {
+            bottom: 10px;
+            left: 10px;
+          }
+        }
+
+        // &:hover {
+        //   .single_work_image {
+        //     img {
+        //       transform: scale(1.03);
+        //     }
+        //   }
+
+        //   .price,
+        //   .art_name {
+        //     opacity: 1;
+        //   }
+        // }
+
+        &:hover{
+          &:nth-child(6n + 1){
+              background-color: $color6;
+          }
+
+          &:nth-child(6n + 2){
+              background-color: $color4;
+          }
+
+          &:nth-child(6n + 3){
+              background-color: $color5;
+          }
+
+          &:nth-child(6n + 4){
+              background-color: $color4;
+          }
+
+          &:nth-child(6n + 5){
+              background-color: $color3;
+          }
+
+          &:nth-child(6n + 6){
+              background-color: $color6;
+          }
+
+          .single_work_image{
+              img{
+                  transform: scale(1.03);
+              }
+          }
+
+          .price, .art_name{
+              opacity: 1;
+          }
+      }
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.page_wrap{
+    padding-top: 65px;
+    box-sizing: border-box;
+
+    @media #{$s1100} {
+        padding-top: 50px;
+    }
+
+    .page_wrap_contenet{
+        padding-top: 5vw;
+        padding-bottom: 5vw;
+        padding: 5vw 2vw;
+        box-sizing: border-box;
+        max-width: 55vw;
+        margin: auto;
+
+        @media #{$s1100} {
+            max-width: 80%;
+        }
+
+        @media #{$s1023} {
+
+            max-width: 100%;
+        }
+
+        @media #{$s750} {
+            padding: 80px 25px;
+        }
+
+        
+        h1{
+            @extend .big_headline;
+        }
+
+        h2{
+            @extend .medium_headline;
+        }
+
+        h3{
+            @extend .headline;
+        }
+
+        p, ul li{
+            @extend .text;
+            line-height: 1.3em;
+        }
+
+        ul li{
+            list-style-type: disc;
+            list-style-position: inside;
+        }
+
+        a{
+            @extend .text;
+            text-decoration: underline;
+        }
+        
+    }
+}
