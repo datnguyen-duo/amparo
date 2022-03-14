@@ -48,7 +48,7 @@ $templates = wp_get_theme()->get_page_templates();
     <?php if(is_page_template('templates/tmplt-home.php')): ?>
         <div class="loader">
             <img src="<?php echo get_template_directory_uri(); ?>/images/loader_new.gif" class="loader_gif">
-            <p>Your Source of Fine Art</p>
+            <p>Your Source For Fine Art</p>
         </div>
 
         <div class="popup_container">
