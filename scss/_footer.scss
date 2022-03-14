@@ -723,7 +723,9 @@ footer {
   min-width: 160px;
   opacity: 0;
   pointer-events: none;
-
+  body.wcfm-dashboard-page & {
+    display: none !important;
+  }
   @media #{$s1100} {
     right: 20px;
     bottom: 20px;
