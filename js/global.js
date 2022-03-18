@@ -230,8 +230,13 @@ function swiperInit() {
         type: "POST", // POST
         beforeSend: function (xhr) {},
         success: function (data) {
-          document.getElementById("cart_total_items_response").innerHTML =
-            "(" + data + ")";
+          document.getElementById("cart_total_items_response").innerHTML = "(" + data + ")";
+
+          if( data === '0' ) {
+            $('.cart_opener').attr("data-text",'CART' );
+          } else {
+            $('.cart_opener').attr("data-text",'CART (' + data + ')' );
+          }
         },
       });
     }

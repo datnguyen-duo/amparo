@@ -59,7 +59,7 @@ $templates = wp_get_theme()->get_page_templates();
                 </div>
                 <div class="content">
                     <h2>Request a Consultation</h2>
-                    <!-- <p>
+                    <!-- <p>f
                         FIND THE PERFECT FIT FOR YOUR NEEDS WITH OUR FILTERED QUIZ!
                     </p> -->
 
@@ -274,9 +274,11 @@ $templates = wp_get_theme()->get_page_templates();
             </nav>
         <?php endif; ?>
         <!-- comment end -->
-
+        <?php
+        $total_items = ( WC()->cart->get_cart_contents_count() ) ? WC()->cart->get_cart_contents_count() : null;
+        ?>
         <div class="buttons_holder <?php if(is_product()): ?>white<?php endif; ?>">
-            <a class="btn header_button cart_opener" data-text="CART">CART</a>
+            <a class="btn header_button cart_opener" data-text="CART <?= ( $total_items ) ? '('.$total_items.')' : null ?>">CART</a>
             <a class="btn header_button menu_opener" data-text="MENU">MENU</a>
             <a class="btn header_button close_about_popup" data-text="BACK">BACK</a>
         </div>
