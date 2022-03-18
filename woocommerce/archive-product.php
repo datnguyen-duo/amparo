@@ -212,10 +212,6 @@ $user_query = new WP_User_Query( array(
                             </li>
 
                             <?php if( $user_query->get_results() ): ?>
-
-                            <?php endif; ?>
-
-                            <?php if( $user_query->get_results() ): ?>
                                 <li>
                                     <a data-text="Artists">Artists
                                         <svg xmlns="http://www.w3.org/2000/svg" width="13.692" height="7.907" viewBox="0 0 13.692 7.907">
