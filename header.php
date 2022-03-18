@@ -50,26 +50,24 @@ $templates = wp_get_theme()->get_page_templates();
             <img src="<?php echo get_template_directory_uri(); ?>/images/loader_new.gif" class="loader_gif">
             <p>Your Source For Fine Art</p>
         </div>
+        <?php if(!true): ?>
+            <div class="popup_container">
+                <div class="popup_content">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/close_popup.svg" class="close_popup">
+                    <div class="image_holder">
+                        <img src="<?php echo get_template_directory_uri(); ?>/images/popup.png" class="popup_image">
+                    </div>
+                    <div class="content">
+                        <h2>Request a Consultation</h2>
 
-        <div class="popup_container">
-            <div class="popup_content">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/close_popup.svg" class="close_popup">
-                <div class="image_holder">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/popup.png" class="popup_image">
-                </div>
-                <div class="content">
-                    <h2>Request a Consultation</h2>
-                    <!-- <p>f
-                        FIND THE PERFECT FIT FOR YOUR NEEDS WITH OUR FILTERED QUIZ!
-                    </p> -->
 
-                    <div class="buttons_holder">
-                        <a href="https://calendly.com/hello-amparoart" class="single_button" target="_blank"><span>Calendly</span></a>
-                        <!-- <a class="single_button take_quiz"><span>Take Quizz</span></a> -->
+                        <div class="buttons_holder">
+                            <a href="https://calendly.com/hello-amparoart" class="single_button" target="_blank"><span>Calendly</span></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
     <?php endif; ?>
 
     <div class="swiper_indicator_desktop">
