@@ -234,25 +234,6 @@ $user_query = new WP_User_Query( array(
                                 </li>
                             <?php endif; ?>
 
-                            <?php if( $collection_terms ): ?>
-                                <li>
-                                    <a data-text="Collection">Collection
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="13.692" height="7.907" viewBox="0 0 13.692 7.907">
-                                            <path id="Path_47227" data-name="Path 47227" d="M8786.292,116.587l6.315,6.316,6.316-6.316" transform="translate(-8785.762 -116.056)" fill="none" stroke="#4b58aa" stroke-width="1.5"/>
-                                        </svg>
-                                    </a>
-
-                                    <div class="sub_filters_mobile collection">
-                                        <?php foreach ( $collection_terms as $term ): ?>
-                                            <label>
-                                                <input type="checkbox" value="<?= $term->slug ?>" name="collection[]" <?= ( $filtered_collection == $term->slug ) ? ' checked' : null; ?>>
-                                                <span class="btn dark_outlined" data-text="<?= $term->name ?>"><?= $term->name ?></span>
-                                            </label>
-                                        <?php endforeach; ?>
-                                    </div>
-                                </li>
-                            <?php endif; ?>
-
                             <?php if( $size_terms ): ?>
                                 <li>
                                     <a data-text="Size">Size

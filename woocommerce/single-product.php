@@ -154,7 +154,7 @@ $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
                                     <div class="left">COLLECTION</div>
                                     <div class="right">
                                         <?php foreach ( $collection_terms as $index => $term ): ?>
-                                            <a href="<?= $shop_page_url ?>?collection=<?= $term->slug ?>"><?php echo $term->name; ?></a><?php if( sizeof($collection_terms) - 1 != $index ){ echo ', ';} ?>
+                                            <a><?php echo $term->name; ?></a><?php if( sizeof($collection_terms) - 1 != $index ){ echo ', ';} ?>
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
