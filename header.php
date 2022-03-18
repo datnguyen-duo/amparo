@@ -241,6 +241,14 @@ $templates = wp_get_theme()->get_page_templates();
                         </a>
                     </li>
 
+                    <li>
+                        <a data-text="Artists">Artists
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13.692" height="7.907" viewBox="0 0 13.692 7.907">
+                                <path id="Path_47227" data-name="Path 47227" d="M8786.292,116.587l6.315,6.316,6.316-6.316" transform="translate(-8785.762 -116.056)" fill="none" stroke="#4b58aa" stroke-width="1.5"/>
+                            </svg>
+                        </a>
+                    </li>
+
                     <?php if( $collection_terms ): ?>
                         <li>
                             <a data-text="Collection">Collection

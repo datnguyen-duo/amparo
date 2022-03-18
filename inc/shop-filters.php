@@ -12,6 +12,7 @@ function shop_filter() {
     $orientation = $_GET['orientation'];
     $search = sanitize_text_field($_GET['search']);
     $price = $_GET['price'];
+    $artists = $_GET['artists'];
 
     $products_args = array(
         'post_type' => 'product',
@@ -30,6 +31,10 @@ function shop_filter() {
     } elseif( $sort == 'price' ) {
         $products_args['orderby'] = 'meta_value_num';
         $products_args['meta_key'] = '_price';
+    }
+
+    if( $artists ) {
+        $products_args['author__in'] = $artists;
     }
 
     if( $medium ) {
