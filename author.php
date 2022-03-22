@@ -16,6 +16,7 @@ $author_profile_image = get_field('profile_image',get_queried_object());
 $user_region = get_field('region',$author);
 $user_medium = get_field('medium', $author);
 $user_style = get_field('style', $author);
+$user_collection = get_field('collection', $author);
 
 $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
 ?>
@@ -45,7 +46,7 @@ $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
             </div>
         </div>
 
-        <?php if( $author_desc || $user_region || $user_style || $user_medium ): ?>
+        <?php if( $author_desc || $user_region || $user_style || $user_medium || $user_collection ): ?>
             <div class="about_artist_info">
                 <div class="about_artist_info_content">
                     <div class="left">
@@ -55,7 +56,7 @@ $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
                         <?php endif; ?>
                     </div>
                     <div class="right">
-                        <?php if( $user_region || $user_style || $user_medium ): ?>
+                        <?php if( $user_region || $user_style || $user_medium || $user_collection ): ?>
                             <div class="info_list">
                                 <?php if( $user_region ): ?>
                                     <div class="single_item">
@@ -86,6 +87,17 @@ $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
                                         <div class="right">
                                             <?php foreach ( $user_medium as $index => $term ): ?>
                                                 <a href="<?= $shop_page_url.'?medium='.$term->slug ?>"><?= $term->name; ?></a><?php if( sizeof($user_medium) - 1 != $index ){ echo ', ';} ?>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if( $user_collection ): ?>
+                                    <div class="single_item">
+                                        <div class="left">COLLECTION</div>
+                                        <div class="right">
+                                            <?php foreach ( $user_collection as $index => $term ): ?>
+                                                <a><?= $term->name; ?></a><?php if( sizeof($user_collection) - 1 != $index ){ echo ', ';} ?>
                                             <?php endforeach; ?>
                                         </div>
                                     </div>

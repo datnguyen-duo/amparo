@@ -91,6 +91,28 @@
             "return_format": "object",
             "multiple": 0,
             "allow_null": 0
+        },
+        {
+            "key": "field_6239af04d0abc",
+            "label": "Collection",
+            "name": "collection",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "product-collection",
+            "field_type": "checkbox",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 0
         }
     ],
     "location": [
@@ -110,5 +132,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1645782194
+    "modified": 1647947554
 }
