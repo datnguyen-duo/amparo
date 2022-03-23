@@ -72,7 +72,15 @@ function render_shopping_cart_items($is_item_added_to_cart = false) {
                 <div class="single_info single_shipping_checkout">
                     <p>SHIPPING</p>
                     <p class="single_shipping_checkout_price">
-                        <?= ( is_numeric($cart_shipping) ) ? wc_price($cart_shipping) : 'FREE' ?>
+                        <?php if( is_numeric($cart_shipping) ):
+                            if( $cart_shipping == '0' ) {
+                                echo '---';
+                            } else {
+                                echo wc_price($cart_shipping);
+                            }
+                        else:
+                            echo 'FREE';
+                        endif; ?>
                     </p>
                 </div>
                 <div class="single_info">
