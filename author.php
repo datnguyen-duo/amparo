@@ -16,9 +16,22 @@ $author_profile_image = get_field('profile_image',get_queried_object());
 $user_region = get_field('region',$author);
 $user_medium = get_field('medium', $author);
 $user_style = get_field('style', $author);
-$user_collection = get_field('collection', $author);
+$user_collection = [];
 
+//Find user collections based on users products collections
 $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
+while( $author_products->have_posts() ): $author_products->the_post();
+    $product_collection_terms = get_the_terms(get_the_ID(), 'product-collection');
+
+    if( $product_collection_terms ):
+        foreach ($product_collection_terms as $term ):
+            if( !in_array( $term, $user_collection ) ) {
+                array_push($user_collection, $term );
+            }
+        endforeach;
+    endif;
+endwhile; wp_reset_postdata();
+//Find user collections based on users products collections END
 ?>
     <div class="single_artist_wrap">
         <div class="single_artist_header">
