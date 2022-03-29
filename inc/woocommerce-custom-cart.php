@@ -70,7 +70,31 @@ function render_shopping_cart_items($is_item_added_to_cart = false) {
                     <p><?= wc_price($cart_subtotal_price)?></p>
                 </div>
                 <div class="single_info single_shipping_checkout">
-                    <p>SHIPPING</p>
+					<?php 
+					function get_shipping_name_by_id( $shipping_id ) { 
+						define( 'WOOCOMMERCE_CHECKOUT', true );
+						define( 'WOOCOMMERCE_CART', true );
+
+						WC()->cart->calculate_totals();
+						WC()->cart->calculate_shipping();
+
+						$packages = WC()->shipping->get_packages();
+						
+						foreach ( $packages as $i => $package ) {
+							
+							if ( isset( $package['rates'] ) && isset( $package['rates'][ $shipping_id ] ) ) {
+								$rate = $package['rates'][ $shipping_id ];
+								
+								/* @var $rate WC_Shipping_Rate */
+								return $rate->get_label();
+							}
+						}
+
+						return '';
+					}
+
+					?>
+                    <p>SHIPPING - <?php  echo get_shipping_name_by_id(WC()->session->get( 'chosen_shipping_methods' )[0]);  ?></p>
                     <p class="single_shipping_checkout_price">
                         <?php if( is_numeric($cart_shipping) ):
                             if( $cart_shipping == '0' ) {

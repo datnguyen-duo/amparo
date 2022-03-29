@@ -54,7 +54,8 @@
 
                         <?php if( WC()->shipping->get_packages() ): ?>
                             <h2>Shipping Methods</h2>
-                            <div class="shipping_methods_copy"></div>
+							<?php echo woocommerce_order_review(); ?>
+                            <!--div class="shipping_methods_copy"></div-->
                         <?php endif; ?>
 
                         <div class="checkout_buttons_holder">
@@ -88,3 +89,31 @@
         <?php render_shopping_cart(); ?>
     </div>
 </div>
+<style>
+input[type=radio] {
+  visibility: hidden;
+  position: relative;
+
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+input[type=radio]:before {
+  content: "";
+  visibility: visible;
+  position: absolute;
+
+  border: 2px solid #eb6864;
+  border-radius: 50%;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+input[checked="checked"]:before {
+  background-color: #eb6864;
+}
+</style>

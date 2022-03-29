@@ -105,3 +105,5 @@ require_once("inc/woocommerce-custom-cart.php");
 require_once("inc/taxonomies.php");
 require_once("inc/shop-filters.php");
 require_once("inc/artists-filters.php");
+
+add_filter('woocommerce_ship_to_different_address_checked', '__return_true', 999);
