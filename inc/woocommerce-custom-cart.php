@@ -94,11 +94,11 @@ function render_shopping_cart_items($is_item_added_to_cart = false) {
 					}
 
 					?>
-                    <p>SHIPPING - <?php  echo get_shipping_name_by_id(WC()->session->get( 'chosen_shipping_methods' )[0]);  ?></p>
+                    <p>SHIPPING <?php  echo get_shipping_name_by_id(WC()->session->get( 'chosen_shipping_methods' )[0]);  ?></p>
                     <p class="single_shipping_checkout_price">
                         <?php if( is_numeric($cart_shipping) ):
                             if( $cart_shipping == '0' ) {
-                                // echo '---';
+                                echo '---';
                             } else {
                                 echo wc_price($cart_shipping);
                             }
