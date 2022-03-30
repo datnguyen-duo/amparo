@@ -448,6 +448,13 @@ body.woocommerce-checkout {
         }
 
         #customer_details {
+          > .shipping_box {
+            > .woocommerce-shipping-fields,
+            > .woocommerce-additional-fields {
+              display: none;
+            }
+          }
+
           textarea,
           input {
             @include formInputFont();
