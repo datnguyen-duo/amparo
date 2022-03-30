@@ -98,7 +98,7 @@ function render_shopping_cart_items($is_item_added_to_cart = false) {
                     <p class="single_shipping_checkout_price">
                         <?php if( is_numeric($cart_shipping) ):
                             if( $cart_shipping == '0' ) {
-                                echo '---';
+                                // echo '---';
                             } else {
                                 echo wc_price($cart_shipping);
                             }
@@ -107,10 +107,10 @@ function render_shopping_cart_items($is_item_added_to_cart = false) {
                         endif; ?>
                     </p>
                 </div>
-                <div class="single_info">
+                <!-- <div class="single_info">
                     <p>INSTALLATION</p>
                     <p><?= wc_price($cart_totals['fee_total'])?></p>
-                </div>
+                </div> -->
             </div>
 
             <div class="checkout_btn_holder">
