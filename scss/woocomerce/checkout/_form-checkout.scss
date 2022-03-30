@@ -511,7 +511,7 @@ body.woocommerce-checkout {
                 left: 0;
               }
 
-              input[checked="checked"] ~ label {
+              input[checked="checked"] ~ label::before {
                 background-color: #fff;
               }
 
