@@ -16,16 +16,16 @@ body.woocommerce-checkout {
     }
   }
 
-  #wc-stripe-payment-request-button-separator{
+  #wc-stripe-payment-request-button-separator {
     // @extend .text;
     color: $color2;
   }
 
-  .woocommerce-checkout #payment div.payment_box::before{
+  .woocommerce-checkout #payment div.payment_box::before {
     display: none;
   }
 
-  #payment div.payment_box{
+  #payment div.payment_box {
     background-color: transparent;
     color: $color2;
     border: 1px solid $color2;
@@ -478,6 +478,14 @@ body.woocommerce-checkout {
           .shipping_box {
             display: none;
           }
+
+          table.shop_table {
+            color: #fff;
+            font-family: "aktiv-grotesk";
+            .variation {
+              display: none;
+            }
+          }
         }
 
         #order_review {
@@ -502,9 +510,9 @@ body.woocommerce-checkout {
               padding: 0;
 
               .payment_box {
-                  // p {
-                  //     color: #000;
-                  // }
+                // p {
+                //     color: #000;
+                // }
               }
             }
 

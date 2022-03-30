@@ -11,6 +11,7 @@ $author_desc = get_the_author_meta('description',$author_id);
 $author_products = new WP_Query(array(
     'post_type' => 'product',
     'author__in' => array($author_id),
+    'posts_per_page' => -1
 ));
 $author_profile_image = get_field('profile_image',get_queried_object());
 $user_region = get_field('region',$author);
