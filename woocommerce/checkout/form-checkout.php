@@ -86,3 +86,10 @@
         <?php render_shopping_cart(); ?>
     </div>
 </div>
+<style>
+
+
+	body.woocommerce-checkout .form_checkout_page_container .checkout_fields form #customer_details>.shipping_box>.woocommerce-shipping-fields, body.woocommerce-checkout .form_checkout_page_container .checkout_fields form #customer_details>.shipping_box>.woocommerce-additional-fields {
+    display: block;
+}
+</style>

@@ -2,7 +2,7 @@
 function render_shopping_cart_items($is_item_added_to_cart = false) {
     $woocommerce_cart = WC()->cart->get_cart();
 //    add_action( 'woocommerce_checkout_create_order', 'get_total_cost', 20, 1 );
-
+	$vendor_ids = array();
     if( $woocommerce_cart ):
         $checkout_url = wc_get_checkout_url();
         $currency_symbol = get_woocommerce_currency_symbol();
@@ -30,6 +30,9 @@ function render_shopping_cart_items($is_item_added_to_cart = false) {
             $product_quantity = $cart_item['quantity'];
             $price = $cart_item['data']->get_price();
             $image = get_the_post_thumbnail($product_id);
+	
+			$vendor_ids[] = $post_obj->post_author;
+			
             ?>
             <div class="item item_<?php echo $product_id; ?>" id="cart_item_<?php echo $cart_item_key; ?>">
                 <div class="item_info_col image_col">
@@ -69,7 +72,7 @@ function render_shopping_cart_items($is_item_added_to_cart = false) {
                     <p>SUBTOTAL</p>
                     <p><?= wc_price($cart_subtotal_price)?></p>
                 </div>
-                <div class="single_info single_shipping_checkout">
+				
 				<?php 
 					function get_shipping_name_by_id( $shipping_id ) { 
 						define( 'WOOCOMMERCE_CHECKOUT', true );
@@ -92,21 +95,90 @@ function render_shopping_cart_items($is_item_added_to_cart = false) {
 
 						return '';
 					}
+				
+				//
+				$insurance = 0;
+				$location = 0;
+				$transport = 0;
+				$packaging = 0;
+				$shipping_cost = 0;
+				$shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+				foreach($shipping_methods as $method_id){
+				?>
+               
+				<?php 
+				$vendor_ids = array_unique($vendor_ids);
+				//print_r($vendor_ids);	
+				foreach($vendor_ids as $vendor){
+					 $quotes = json_decode(WC()->session->get( 'arta_rates_'.$vendor),true);
+					 foreach ($quotes as $q) {
+						 //print_r($q);
+						
+						 if($q['id']==$method_id){
+							 
+							 $shipping_cost = $q['cost'];
+							 if(!empty($q['included_insurance_policy'])){
+								 $insurance += $q['included_insurance_policy']['amount'];
+							 }
+							  if(!empty($q['included_services'])){
+								foreach($q['included_services'] as $service){
+									if($service['type']=='location'){
+										$location = $service['amount'];
+									}
+									if($service['type']=='transport'){
+										$transport = $service['amount'];
+									}
+									if($service['type']=='packing'){
+										$packaging = $service['amount'];
+									}
+								}  
+							  }
+						 }
+						 
+					 }
+				}
+				
+				
+				?>
+				<?php if(!empty(get_shipping_name_by_id($method_id))): ?>
+				 <div class="single_info single_shipping_checkout">
+				
 
-					?>
-                    <p>SHIPPING <?php  echo get_shipping_name_by_id(WC()->session->get( 'chosen_shipping_methods' )[0]);  ?></p>
+					
+                    <p><b>SHIPPING <?php  echo get_shipping_name_by_id($method_id);  ?></b></p>
                     <p class="single_shipping_checkout_price">
-                        <?php if( is_numeric($cart_shipping) ):
-                            if( $cart_shipping == '0' ) {
+						<b>
+                        <?php if( is_numeric($shipping_cost) ):
+                            if( $shipping_cost == '0' ) {
                                 echo '---';
                             } else {
-                                echo wc_price($cart_shipping);
+                                echo wc_price($shipping_cost);
                             }
                         else:
                             echo 'FREE';
-                        endif; ?>
+						endif; ?>
+						</b>
                     </p>
                 </div>
+				
+				<div class="single_info">
+					 <p>Transport</p>
+                    <p><?= wc_price($transport)?></p>
+				</div>
+				<div class="single_info">
+					 <p>Location</p>
+                    <p><?= wc_price($location)?></p>
+				</div>
+				<div class="single_info">
+					 <p>Packing</p>
+                    <p><?= wc_price($packaging)?></p>
+				</div>
+				<div class="single_info">
+					 <p>Insurance</p>
+                    <p><?= wc_price($insurance)?></p>
+				</div>
+				<?php endif; ?>
+				<?php } ?>
                 <!-- <div class="single_info">
                     <p>INSTALLATION</p>
                     <p><?= wc_price($cart_totals['fee_total'])?></p>

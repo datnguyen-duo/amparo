@@ -107,3 +107,15 @@ require_once("inc/shop-filters.php");
 require_once("inc/artists-filters.php");
 
 add_filter('woocommerce_ship_to_different_address_checked', '__return_true', 999);
+
+add_filter( 'woocommerce_checkout_fields' , 'trigger_update_checkout_on_change' );
+function trigger_update_checkout_on_change( $fields ) {
+
+    $fields['billing']['billing_state']['class'][] = 'update_totals_on_change';
+    $fields['billing']['billing_postcode']['class'][] = 'update_totals_on_change';
+	
+	$fields['shipping']['shipping_state']['class'][] = 'update_totals_on_change';
+    $fields['shipping']['shipping_postcode']['class'][] = 'update_totals_on_change';
+
+    return $fields;
+}
