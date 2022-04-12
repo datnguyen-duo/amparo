@@ -18,6 +18,8 @@ $twitter = get_field('twitter', 'option');
 $navigation_button = get_field('navigation_button', 'option');
 $header_banner_text = get_field('header_banner_text', 'option');
 
+$head_scripts = get_field('head_scripts', 'option');
+
 $template_path = get_post_meta(get_the_ID(), '_wp_page_template', true);
 $templates = wp_get_theme()->get_page_templates();
 ?>
@@ -38,6 +40,13 @@ $templates = wp_get_theme()->get_page_templates();
 
 
     <?php wp_head(); ?>
+
+    
+    <?php if($head_scripts): ?>
+        <script>
+            <?php echo $head_scripts ?>
+        </script>
+    <?php endif; ?>
 </head>
 
 <body <?php body_class();?> data-barba="wrapper">

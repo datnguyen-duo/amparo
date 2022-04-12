@@ -116,6 +116,9 @@ function trigger_update_checkout_on_change( $fields ) {
 	
 	$fields['shipping']['shipping_state']['class'][] = 'update_totals_on_change';
     $fields['shipping']['shipping_postcode']['class'][] = 'update_totals_on_change';
+	$fields['shipping']['shipping_address_1']['class'][] = 'update_totals_on_change';
+    $fields['shipping']['shipping_address_2']['class'][] = 'update_totals_on_change';
+	
 
     return $fields;
 }
