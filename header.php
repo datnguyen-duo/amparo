@@ -43,9 +43,7 @@ $templates = wp_get_theme()->get_page_templates();
 
     
     <?php if($head_scripts): ?>
-        <script>
-            <?php echo $head_scripts ?>
-        </script>
+        <?php echo $head_scripts ?>
     <?php endif; ?>
 </head>
 
