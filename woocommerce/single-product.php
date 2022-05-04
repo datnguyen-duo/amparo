@@ -15,6 +15,8 @@ $gallery = $product->get_gallery_image_ids();
 $product_terms = get_the_terms( $product_id, 'product_cat' );
 $product_tags = get_the_terms( $product_id, 'product_tag' );
 $product_desc = $product->get_description();
+$is_in_stock = $product->is_in_stock();
+
 $author_id = $post->post_author;
 $author = get_user_by( 'ID', $author_id );
 
@@ -46,7 +48,16 @@ $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
 //                remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 //                do_action( 'woocommerce_single_product_summary' );
             ?>
-            <a href="<?= $product->add_to_cart_url() ?>" value="<?= esc_attr( $product->get_id() ); ?>" class="single_button ajax_add_to_cart add_to_cart_button" data-product_id="<?= get_the_ID(); ?>" data-product_sku="<?= esc_attr($product->get_sku()) ?>" aria-label="Add “<?= the_title_attribute() ?>” to your cart" data-barba-prevent="self"><span>PURCHASE</span></a>
+            <?php if( $is_in_stock ): ?>
+            <a href="<?= $product->add_to_cart_url() ?>" value="<?= esc_attr( $product->get_id() ); ?>"
+               class="single_button ajax_add_to_cart add_to_cart_button"
+               data-product_id="<?= get_the_ID(); ?>"
+               data-product_sku="<?= esc_attr($product->get_sku()) ?>"
+               aria-label="Add “<?= the_title_attribute() ?>” to your cart"
+               data-barba-prevent="self"><span>PURCHASE</span></a>
+            <?php else: ?>
+                <span class="single_button"><span>SOLD OUT</span></span>
+            <?php endif; ?>
         </div>
         <div class="global_filters roomtype flex dark">
             <div class="room_type">

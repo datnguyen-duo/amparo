@@ -225,6 +225,32 @@
           }
         }
 
+        .sold-out {
+          position: absolute;
+          left: 1vw;
+          top: 1vw;
+          //opacity: 0;
+          @extend .font2;
+          line-height: 1.2em;
+          font-size: 1vw;
+          color: $color6;
+          text-transform: uppercase;
+
+          @media #{$s1100} {
+            opacity: 1;
+            line-height: 0.8em;
+          }
+
+          @media #{$s1023} {
+            font-size: 12px;
+          }
+
+          @media #{$s750} {
+            top: 10px;
+            left: 10px;
+          }
+        }
+
         .price {
           position: absolute;
           right: 1vw;

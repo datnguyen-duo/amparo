@@ -133,9 +133,14 @@ function print_products( $query = '' ) {
                 <?php while( $query->have_posts() ): $query->the_post();
                     $product = wc_get_product( get_the_ID() );
                     $author = get_the_author();
-                    $price = $product->get_price()
+                    $price = $product->get_price();
+                    $is_in_stock = $product->is_in_stock();
                     ?>
                     <a href="<?php the_permalink() ?>" class="single_work">
+                        <?php if( !$is_in_stock ): ?>
+                            <span class="sold-out">Sold out</span>
+                        <?php endif; ?>
+
                         <?php if( $author || $price ): ?>
                             <div class="price">
                                 <?php if( $author ): ?>
