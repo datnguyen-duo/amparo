@@ -267,7 +267,8 @@
           // width: auto;
           // height: 100%;
           &.small {
-            &.square {
+            &.square,
+            &.circular {
               width: 8%;
               @media #{$s1023} {
                 width: 18%;
@@ -288,7 +289,8 @@
           }
 
           &.medium {
-            &.square {
+            &.square,
+            &.circular {
               width: 11%;
               @media #{$s1023} {
                 width: 24.75%;
@@ -315,7 +317,8 @@
                 width: 36%;
               }
             }
-            &.square {
+            &.square,
+            &.circular {
               width: 16%;
               @media #{$s1023} {
                 width: 36%;
@@ -336,7 +339,8 @@
                 width: 63%;
               }
             }
-            &.square {
+            &.square,
+            &.circular {
               width: 28%;
               @media #{$s1023} {
                 width: 63%;
