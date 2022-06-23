@@ -14,8 +14,8 @@ $filtered_products_args = array(
     'post_status' => array( 'publish' ),
     'paged' => 1,
     'tax_query' => array(),
-    'orderby' => 'meta_value_num',
-    'meta_key' => 'total_sales',
+//    'orderby' => 'meta_value_num',
+//    'meta_key' => 'total_sales',
 );
 
 if( $filtered_medium ) {
@@ -116,12 +116,12 @@ $user_query = new WP_User_Query( array(
 
                 <div class="filters_holder">
                     <div class="sort_filter_mobile">
+<!--                        <label class="single_filter">-->
+<!--                            <input type="radio" name="sort" value="sales" checked>-->
+<!--                            <span>RELEVANCE</span>-->
+<!--                        </label>-->
                         <label class="single_filter">
-                            <input type="radio" name="sort" value="sales" checked>
-                            <span>RELEVANCE</span>
-                        </label>
-                        <label class="single_filter">
-                            <input type="radio" name="sort" value="date">
+                            <input type="radio" name="sort" value="date" checked>
                             <span>NEWEST</span>
                         </label>
                         <label class="single_filter">
@@ -375,12 +375,12 @@ $user_query = new WP_User_Query( array(
                         </div>
 
                         <div class="filter_holder sort_filter_holder">
+<!--                            <label class="single_filter">-->
+<!--                                <input type="radio" name="sort" value="sales" checked>-->
+<!--                                <span>RELEVANCE</span>-->
+<!--                            </label>-->
                             <label class="single_filter">
-                                <input type="radio" name="sort" value="sales" checked>
-                                <span>RELEVANCE</span>
-                            </label>
-                            <label class="single_filter">
-                                <input type="radio" name="sort" value="date">
+                                <input type="radio" name="sort" value="date" checked>
                                 <span>NEWEST</span>
                             </label>
                             <label class="single_filter">

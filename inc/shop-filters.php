@@ -119,8 +119,8 @@ function print_products( $query = '' ) {
             'post_type' => 'product',
             'posts_per_page' => $GLOBALS['per_page'],
             'paged' => 1,
-            'orderby' => 'meta_value_num',
-            'meta_key' => 'total_sales',
+//            'orderby' => 'meta_value_num',
+//            'meta_key' => 'total_sales',
         ));
     }
     $posts_per_page = $query->query['posts_per_page'];
